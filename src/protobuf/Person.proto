@@ -6,15 +6,19 @@ option optimize_for = SPEED;
 option java_package = "com.yibo.netty.example6";
 option java_outer_classname = "MyDataInfo";
 
+//protobuf可以使用message管理其他message
 message MyMessage{
+    //定义一个枚举类
     enum DataType{
         PersonType = 1;
         DogType = 2;
         CatType = 3;
     }
 
+    //用data_type来标识传的是哪一个枚举类型
     required DataType data_type = 1;
 
+    //每次枚举类型只能出现其中一个
     oneof dataBody{
         Person person = 2;
         Dog dog = 3;
